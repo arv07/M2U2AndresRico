@@ -57,12 +57,36 @@ function calcTotalPrice()
     for (let index = 1; index < quantity+1; index++) {
         
         priceSubject = Number(document.querySelector(`#subject${index}`).value);
+        console.log(priceSubject);
+        
         totalSubject = totalSubject + priceSubject;
         //console.log(`"#${index}"`);
         
     }
 
     totalPrice = (totalSubject - ((totalSubject * descuento) / 100) + (papeleria + carne));
+
+
+    let pricesContainer = document.createElement("div");
+
+    pricesContainer.setAttribute("class", "d-flex flex-row justify-content-center mb-3");
+
+
+    let titleTotalSubject = document.createElement("h5");
+    titleTotalSubject.setAttribute("class", "fw-bold");
+    titleTotalSubject.innerHTML = "Precio Total:";
+
+    let priceTotalSubject = document.createElement("p");
+    priceTotalSubject.setAttribute("class", "lead");
+    priceTotalSubject.innerHTML = "$" + totalPrice;
+
+    pricesContainer.insertBefore(priceTotalSubject, pricesContainer.firstChild);
+    pricesContainer.insertBefore(titleTotalSubject, pricesContainer.lastChild);
+
+    
+    
+
+    document.body.appendChild(pricesContainer);
 
 
 
